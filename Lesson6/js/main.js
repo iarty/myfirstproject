@@ -1,0 +1,15 @@
+let getpay = document.getElementById('start'),
+    table = document.querySelectorAll('.result-table [class*="-value"]'),
+    expensesitem = document.getElementsByClassName('expenses-item'),
+    paymentbutton = document.querySelectorAll('.count-budget-btn'),
+    expensivbutton = document.querySelectorAll('.expenses-item-btn'),
+    optexpensivbutton = document.querySelectorAll('.optionalexpenses-btn'),
+    optexpensivitem = document.querySelectorAll('.optionalexpenses-item'),
+    income = document.querySelector('.choose-income'),
+    checkbox = document.querySelector('.checkbox'),
+    summ = document.querySelector('.choose-sum'),
+    percent = document.querySelector('.choose-percent'),
+    year = document.querySelector('.year-value'),
+    month = document.querySelector('.month-value'),
+    day = document.querySelector('.day-value');
+console.log(day);
