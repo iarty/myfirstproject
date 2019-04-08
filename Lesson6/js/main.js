@@ -14,12 +14,15 @@ let getpay = document.getElementById('start'),
 	day = document.querySelector('.day-value');
 incomeMonth = document.querySelector('.monthsavings-value');
 incomeYear = document.querySelector('.yearsavings-value');
-
-let budget, time, p = false;
+paymentButton.disabled = true;
+	expensivButton.disabled = true;
+	optExpensivButton.disabled = true;
+let budget, time;
 getpay.addEventListener('click', function () {
+	
 	let j = 0,
 		k = 3;
-	p = true;
+	//p = true;
 	time = prompt("Введите дату в формате YYYY-MM-DD");
 	budget = +prompt("Ваш бюджет на месяц?");
 	while (isNaN(budget) || budget == "" || budget == null) { //Цикл, на проверку ввода
@@ -33,7 +36,10 @@ getpay.addEventListener('click', function () {
 	}
 	appData.money = budget;
 	appData.timeData = time;
-	appData.status = p;
+	//appData.status = p;
+	paymentButton.disabled = false;
+	expensivButton.disabled = false;
+	optExpensivButton.disabled = false;
 	table[0].textContent = budget.toFixed();
 	year.value = new Date(Date.parse(time)).getFullYear();
 	month.value = new Date(Date.parse(time)).getMonth() + 1;
@@ -49,8 +55,9 @@ let appData = {
 	income: [], //массив данных с доп. доходом
 };
 
+
 expensivButton.addEventListener('click', function () {
-	if (appData.status == true) {
+
 		let j = 0,
 			sum = 0;
 		for (let i = 0; i < expensesItem.length; i++) {
@@ -73,13 +80,11 @@ expensivButton.addEventListener('click', function () {
 		}
 		table[3].textContent = sum.toFixed();
 		appData.fix = sum;
-	} else {
-		alert('Нажмите кнопку Начать расчет');
-	};
+	
 });
 
 optExpensivButton.addEventListener('click', function () {
-	if ((appData.status) == true) {
+
 		for (let i = 0; i < optExpensivItem.length; i++) {
 			let a = optExpensivItem[i].value;
 			if ((typeof (a)) === "string" && typeof (a) != null && a != '' && a.length < 50) { //Условие, на проверку ввода
@@ -90,13 +95,11 @@ optExpensivButton.addEventListener('click', function () {
 				i = i - 1;
 			}
 		};
-	} else {
-		alert('Нажмите кнопку Начать расчет');
-	};
+	
 });
 
 paymentButton.addEventListener('click', function () {
-	if ((appData.status) == true) {
+	
 		if ((appData.fix) != undefined && (appData.money) != undefined) {
 			appData.moneyPerDay = ((appData.money - appData.fix) / 30).toFixed();
 			table[1].textContent = appData.moneyPerDay;
@@ -112,9 +115,7 @@ paymentButton.addEventListener('click', function () {
 		} else {
 			alert('Нет необходимых данных для расчета');
 		};
-	} else {
-		alert('Нажмите кнопку Начать расчет');
-	}
+	
 });
 
 income.addEventListener('input', function () {
