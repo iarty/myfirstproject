@@ -113,14 +113,11 @@ window.addEventListener('DOMContentLoaded', () => {
         more.classList.remove('more-splash');
     });
 
-
-    for (let i = 0; i < btn.length; i++) {
-        btn[i].addEventListener('click', () => {
+    btn.forEach((e) =>{
+        e.addEventListener('click',()=>{
             overlay.style.display = 'block';
             this.classList.add('more-splash');
             document.body.style.overflow = 'hidden';
         });
-    };
-
-
+    });
 });
